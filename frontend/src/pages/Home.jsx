@@ -23,39 +23,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)',
-      paddingTop: '110px', 
-      paddingBottom: '60px' 
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ marginBottom: '48px', textAlign: 'center' }}>
-          <h1 style={{ 
-            fontSize: '42px', 
-            fontWeight: 700, 
-            color: '#2d2a26', 
-            marginBottom: '12px',
-            fontFamily: 'Georgia, serif',
-            letterSpacing: '-0.5px',
-          }}>
+    <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] pt-27.5 pb-15">
+      <div className="max-w-300 mx-auto px-6">
+        <div className="mb-12 text-center">
+          <h1 className="text-[42px] font-bold text-[#2d2a26] mb-3 font-serif tracking-[-0.5px]">
             Our Collection
           </h1>
-          <p style={{ fontSize: '17px', color: '#7a756e', maxWidth: '500px', margin: '0 auto', lineHeight: '1.6' }}>
+          <p className="text-[17px] text-[#7a756e] max-w-125 mx-auto leading-relaxed">
             Curated selection of premium products for the discerning buyer
           </p>
         </div>
 
         {loading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+          <div className="flex justify-center items-center min-h-75">
             <Loader size="lg" text="Loading collection..." />
           </div>
         ) : (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '28px',
-          }}>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-7">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

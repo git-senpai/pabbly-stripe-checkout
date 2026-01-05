@@ -12,98 +12,45 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '20px',
-      padding: '20px',
-      backgroundColor: '#faf8f5',
-      borderRadius: '16px',
-      boxShadow: '0 2px 12px rgba(45,42,38,0.06)',
-      border: '1px solid rgba(139,154,110,0.15)',
-    }}>
-      <div style={{
-        width: '80px',
-        height: '80px',
-        background: 'linear-gradient(180deg, #f0ebe3 0%, #e8e2d7 100%)',
-        borderRadius: '12px',
-        overflow: 'hidden',
-        flexShrink: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '8px',
-      }}>
-        <img src={item.image} alt={item.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+    <div className="flex items-center gap-5 p-5 bg-[#faf8f5] rounded-2xl shadow-[0_2px_12px_rgba(45,42,38,0.06)] border border-[rgba(139,154,110,0.15)]">
+      <div className="w-20 h-20 bg-linear-to-b from-[#f0ebe3] to-[#e8e2d7] rounded-xl overflow-hidden shrink-0 flex items-center justify-center p-2">
+        <img 
+          src={item.image} 
+          alt={item.name} 
+          className="max-w-full max-h-full object-contain" 
+        />
       </div>
 
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <h3 style={{
-          fontSize: '16px',
-          fontWeight: 600,
-          color: '#2d2a26',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          fontFamily: 'Georgia, serif',
-        }}>{item.name}</h3>
-        <p style={{ fontSize: '14px', color: '#7a756e', marginTop: '4px' }}>{formatPrice(item.price)}</p>
+      <div className="flex-1 min-w-0">
+        <h3 className="text-base font-semibold text-[#2d2a26] overflow-hidden text-ellipsis whitespace-nowrap font-serif">
+          {item.name}
+        </h3>
+        <p className="text-sm text-[#7a756e] mt-1">{formatPrice(item.price)}</p>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div className="flex items-center gap-2.5">
         <button
           onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-          style={{
-            width: '34px',
-            height: '34px',
-            backgroundColor: '#e8e2d7',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#5a6b4a',
-          }}
+          className="w-8.5 h-8.5 bg-[#e8e2d7] border-none rounded-lg cursor-pointer flex items-center justify-center text-[#5a6b4a]"
         >
           <Minus size={14} />
         </button>
-        <span style={{ width: '28px', textAlign: 'center', fontSize: '15px', fontWeight: 600, color: '#2d2a26' }}>{item.quantity}</span>
+        <span className="w-7 text-center text-[15px] font-semibold text-[#2d2a26]">{item.quantity}</span>
         <button
           onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-          style={{
-            width: '34px',
-            height: '34px',
-            backgroundColor: '#e8e2d7',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#5a6b4a',
-          }}
+          className="w-8.5 h-8.5 bg-[#e8e2d7] border-none rounded-lg cursor-pointer flex items-center justify-center text-[#5a6b4a]"
         >
           <Plus size={14} />
         </button>
       </div>
 
-      <span style={{ fontSize: '16px', fontWeight: 700, color: '#5a6b4a', width: '90px', textAlign: 'right', fontFamily: 'Georgia, serif' }}>
+      <span className="text-base font-bold text-[#5a6b4a] w-22.5 text-right font-serif">
         {formatPrice(item.price * item.quantity)}
       </span>
 
       <button
         onClick={() => removeFromCart(item.productId)}
-        style={{
-          padding: '8px',
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          color: '#a09890',
-          transition: 'color 0.2s',
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.color = '#c45c5c'}
-        onMouseLeave={(e) => e.currentTarget.style.color = '#a09890'}
+        className="p-2 bg-transparent border-none cursor-pointer text-[#a09890] transition-colors duration-200 hover:text-[#c45c5c]"
       >
         <X size={20} />
       </button>

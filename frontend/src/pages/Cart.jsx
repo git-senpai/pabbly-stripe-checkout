@@ -52,79 +52,59 @@ const Cart = () => {
 
   if (redirecting) {
     return (
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] flex items-center justify-center">
         <Loader size="lg" text="Redirecting to payment..." />
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', paddingTop: '110px', paddingBottom: '60px' }}>
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '36px', fontWeight: 700, color: '#2d2a26', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>Your Cart</h1>
-          <p style={{ fontSize: '16px', color: '#7a756e' }}>{cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}</p>
+    <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] pt-27.5 pb-15">
+      <div className="max-w-250 mx-auto px-6">
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold text-[#2d2a26] mb-2 font-serif">Your Cart</h1>
+          <p className="text-base text-[#7a756e]">{cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}</p>
         </div>
 
         {cartItems.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '40px', alignItems: 'start' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 items-start">
+            <div className="flex flex-col gap-4">
               {cartItems.map((item, index) => (
                 <CartItem key={item.productId || index} item={item} />
               ))}
             </div>
 
-            <div style={{
-              backgroundColor: '#faf8f5',
-              borderRadius: '20px',
-              padding: '32px',
-              boxShadow: '0 4px 24px rgba(45,42,38,0.1)',
-              border: '1px solid rgba(139,154,110,0.2)',
-              position: 'sticky',
-              top: '90px',
-            }}>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#2d2a26', marginBottom: '24px', fontFamily: 'Georgia, serif' }}>Order Summary</h2>
+            <div className="bg-[#faf8f5] rounded-3xl p-8 shadow-[0_4px_24px_rgba(45,42,38,0.1)] border border-[rgba(139,154,110,0.2)] sticky top-22.5">
+              <h2 className="text-xl font-bold text-[#2d2a26] mb-6 font-serif">Order Summary</h2>
               
-              <div style={{ marginBottom: '24px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', color: '#7a756e', fontSize: '15px' }}>
+              <div className="mb-6">
+                <div className="flex justify-between mb-3.5 text-[#7a756e] text-[15px]">
                   <span>Subtotal</span>
-                  <span style={{ color: '#2d2a26', fontWeight: 500 }}>{formatPrice(total)}</span>
+                  <span className="text-[#2d2a26] font-medium">{formatPrice(total)}</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '18px', color: '#7a756e', fontSize: '15px' }}>
+                <div className="flex justify-between mb-4.5 text-[#7a756e] text-[15px]">
                   <span>Shipping</span>
-                  <span style={{ color: '#5a6b4a', fontWeight: 600 }}>Complimentary</span>
+                  <span className="text-[#5a6b4a] font-semibold">Complimentary</span>
                 </div>
-                <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #d4c9b8, transparent)', marginBottom: '18px' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '19px', fontWeight: 700, color: '#2d2a26', fontFamily: 'Georgia, serif' }}>
+                <div className="h-px bg-linear-to-r from-transparent via-[#d4c9b8] to-transparent mb-4.5" />
+                <div className="flex justify-between text-[19px] font-bold text-[#2d2a26] font-serif">
                   <span>Total</span>
-                  <span style={{ color: '#5a6b4a' }}>{formatPrice(total)}</span>
+                  <span className="text-[#5a6b4a]">{formatPrice(total)}</span>
                 </div>
               </div>
 
               <form onSubmit={handleCheckout}>
-                <div style={{ marginBottom: '20px' }}>
-                  <label style={{ display: 'block', fontSize: '13px', color: '#7a756e', marginBottom: '8px', fontWeight: 500 }}>Email Address</label>
-                  <div style={{ position: 'relative' }}>
-                    <Mail size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#a09890' }} />
+                <div className="mb-5">
+                  <label className="block text-[13px] text-[#7a756e] mb-2 font-medium">Email Address</label>
+                  <div className="relative">
+                    <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#a09890]" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="your@email.com"
                       required
-                      style={{
-                        width: '100%',
-                        padding: '14px 14px 14px 44px',
-                        fontSize: '15px',
-                        border: '1px solid #d4c9b8',
-                        borderRadius: '12px',
-                        backgroundColor: '#fff',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                        transition: 'border-color 0.2s',
-                      }}
-                      onFocus={(e) => e.target.style.borderColor = '#5a6b4a'}
-                      onBlur={(e) => e.target.style.borderColor = '#d4c9b8'}
+                      className="w-full pl-11 pr-3.5 py-3.5 text-[15px] border border-[#d4c9b8] rounded-xl bg-white outline-none transition-colors focus:border-[#5a6b4a]"
                     />
                   </div>
                 </div>
@@ -132,25 +112,11 @@ const Cart = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  style={{
-                    width: '100%',
-                    padding: '16px',
-                    backgroundColor: loading ? '#a09890' : '#5a6b4a',
-                    color: '#f8f5f0',
-                    border: 'none',
-                    borderRadius: '12px',
-                    fontSize: '16px',
-                    fontWeight: 600,
-                    cursor: loading ? 'not-allowed' : 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    transition: 'background 0.2s',
-                    fontFamily: 'Georgia, serif',
-                  }}
-                  onMouseEnter={(e) => !loading && (e.currentTarget.style.backgroundColor = '#4a5a3a')}
-                  onMouseLeave={(e) => !loading && (e.currentTarget.style.backgroundColor = '#5a6b4a')}
+                  className={`w-full p-4 rounded-xl text-base font-semibold font-serif flex items-center justify-center gap-2.5 transition-colors ${
+                    loading 
+                      ? 'bg-[#a09890] text-[#f8f5f0] cursor-not-allowed' 
+                      : 'bg-[#5a6b4a] text-[#f8f5f0] cursor-pointer hover:bg-[#4a5a3a]'
+                  }`}
                 >
                   {loading ? <Loader size="sm" text="" /> : <><span>Proceed to Payment</span><ArrowRight size={18} /></>}
                 </button>
@@ -158,34 +124,16 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '100px 0' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              background: 'linear-gradient(135deg, #e8e2d7 0%, #d4c9b8 100%)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 32px',
-            }}>
-              <ShoppingBag size={40} color="#5a6b4a" />
+          <div className="text-center py-25">
+            <div className="w-25 h-25 bg-linear-to-br from-[#e8e2d7] to-[#d4c9b8] rounded-full flex items-center justify-center mx-auto mb-8">
+              <ShoppingBag size={40} className="text-[#5a6b4a]" />
             </div>
-            <h2 style={{ fontSize: '28px', fontWeight: 700, color: '#2d2a26', marginBottom: '12px', fontFamily: 'Georgia, serif' }}>Your cart is empty</h2>
-            <p style={{ color: '#7a756e', marginBottom: '32px', fontSize: '16px' }}>Discover our curated collection</p>
-            <Link to="/" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '16px 32px',
-              backgroundColor: '#5a6b4a',
-              color: '#f8f5f0',
-              textDecoration: 'none',
-              borderRadius: '12px',
-              fontSize: '16px',
-              fontWeight: 600,
-              fontFamily: 'Georgia, serif',
-            }}>
+            <h2 className="text-[28px] font-bold text-[#2d2a26] mb-3 font-serif">Your cart is empty</h2>
+            <p className="text-[#7a756e] mb-8 text-base">Discover our curated collection</p>
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2.5 py-4 px-8 bg-[#5a6b4a] text-[#f8f5f0] no-underline rounded-xl text-base font-semibold font-serif transition-colors hover:bg-[#4a5a3a]"
+            >
               Explore Collection
             </Link>
           </div>

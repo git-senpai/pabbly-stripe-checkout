@@ -11,7 +11,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)' }}>
+        <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3]">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

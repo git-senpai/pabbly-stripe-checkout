@@ -12,113 +12,32 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: '#faf8f5',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 20px rgba(45,42,38,0.08)',
-        transition: 'transform 0.3s, box-shadow 0.3s',
-        border: '1px solid rgba(139,154,110,0.2)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-6px)';
-        e.currentTarget.style.boxShadow = '0 12px 32px rgba(45,42,38,0.12)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 20px rgba(45,42,38,0.08)';
-      }}
-    >
-      <div
-        style={{
-          aspectRatio: '1',
-          background: 'linear-gradient(180deg, #f0ebe3 0%, #e8e2d7 100%)',
-          padding: '28px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <div className="bg-[#faf8f5] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.08)] transition-all duration-300 border border-[rgba(139,154,110,0.2)] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(45,42,38,0.12)]">
+      <div className="aspect-square bg-linear-to-b from-[#f0ebe3] to-[#e8e2d7] p-7 flex items-center justify-center">
         <img
           src={product.image}
           alt={product.name}
-          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+          className="max-w-full max-h-full object-contain"
         />
       </div>
 
-      <div style={{ padding: '24px' }}>
-        <h3
-          style={{
-            fontSize: '17px',
-            fontWeight: 600,
-            color: '#2d2a26',
-            marginBottom: '8px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            fontFamily: 'Georgia, serif',
-          }}
-        >
+      <div className="p-6">
+        <h3 className="text-[17px] font-semibold text-[#2d2a26] mb-2 overflow-hidden text-ellipsis whitespace-nowrap font-serif">
           {product.name}
         </h3>
 
-        <p
-          style={{
-            fontSize: '13px',
-            color: '#7a756e',
-            marginBottom: '20px',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            lineHeight: '1.6',
-          }}
-        >
+        <p className="text-[13px] text-[#7a756e] mb-5 line-clamp-2 leading-relaxed">
           {product.description}
         </p>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '20px',
-              fontWeight: 700,
-              color: '#5a6b4a',
-              fontFamily: 'Georgia, serif',
-            }}
-          >
+        <div className="flex items-center justify-between">
+          <span className="text-xl font-bold text-[#5a6b4a] font-serif">
             {formatPrice(product.price)}
           </span>
 
           <button
             onClick={() => addToCart(product)}
-            style={{
-              width: '42px',
-              height: '42px',
-              backgroundColor: '#5a6b4a',
-              color: '#f8f5f0',
-              border: 'none',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s, transform 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#4a5a3a';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#5a6b4a';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
+            className="w-10.5 h-10.5 bg-[#5a6b4a] text-[#f8f5f0] border-none rounded-full cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-[#4a5a3a] hover:scale-110"
           >
             <ShoppingCart size={20} />
           </button>

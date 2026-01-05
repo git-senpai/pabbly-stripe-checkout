@@ -28,64 +28,34 @@ const Cancel = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] flex items-center justify-center">
         <Loader size="lg" />
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', paddingTop: '130px', paddingBottom: '60px' }}>
-      <div style={{ maxWidth: '520px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{
-          backgroundColor: '#faf8f5',
-          borderRadius: '24px',
-          padding: '48px',
-          boxShadow: '0 8px 32px rgba(45,42,38,0.12)',
-          border: '1px solid rgba(139,154,110,0.2)',
-          textAlign: 'center',
-        }}>
-          <div style={{
-            width: '88px',
-            height: '88px',
-            background: 'linear-gradient(135deg, #f5e8e8 0%, #e8d4d4 100%)',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 28px',
-          }}>
-            <XCircle size={44} color="#a05050" />
+    <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] pt-32.5 pb-15">
+      <div className="max-w-130 mx-auto px-6">
+        <div className="bg-[#faf8f5] rounded-3xl p-12 shadow-[0_8px_32px_rgba(45,42,38,0.12)] border border-[rgba(139,154,110,0.2)] text-center">
+          <div className="w-22 h-22 bg-linear-to-br from-[#f5e8e8] to-[#e8d4d4] rounded-full flex items-center justify-center mx-auto mb-7">
+            <XCircle size={44} className="text-[#a05050]" />
           </div>
           
-          <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#2d2a26', marginBottom: '12px', fontFamily: 'Georgia, serif' }}>Payment Failure</h1>
-          <p style={{ color: '#7a756e', marginBottom: '36px', fontSize: '16px', lineHeight: '1.6' }}>Your payment was not completed. No charges were made to your account.</p>
+          <h1 className="text-[32px] font-bold text-[#2d2a26] mb-3 font-serif">Payment Failure</h1>
+          <p className="text-[#7a756e] mb-9 text-base leading-relaxed">Your payment was not completed. No charges were made to your account.</p>
 
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/cart" style={{
-              display: 'inline-block',
-              padding: '16px 32px',
-              backgroundColor: '#5a6b4a',
-              color: '#f8f5f0',
-              textDecoration: 'none',
-              borderRadius: '12px',
-              fontSize: '16px',
-              fontWeight: 600,
-              fontFamily: 'Georgia, serif',
-            }}>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link 
+              to="/cart" 
+              className="inline-block py-4 px-8 bg-[#5a6b4a] text-[#f8f5f0] no-underline rounded-xl text-base font-semibold font-serif transition-colors hover:bg-[#4a5a3a]"
+            >
               Try Again
             </Link>
-            <Link to="/" style={{
-              display: 'inline-block',
-              padding: '16px 32px',
-              backgroundColor: '#e8e2d7',
-              color: '#2d2a26',
-              textDecoration: 'none',
-              borderRadius: '12px',
-              fontSize: '16px',
-              fontWeight: 600,
-              fontFamily: 'Georgia, serif',
-            }}>
+            <Link 
+              to="/" 
+              className="inline-block py-4 px-8 bg-[#e8e2d7] text-[#2d2a26] no-underline rounded-xl text-base font-semibold font-serif transition-colors hover:bg-[#ddd4c5]"
+            >
               Browse Collection
             </Link>
           </div>

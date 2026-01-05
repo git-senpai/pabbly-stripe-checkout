@@ -7,59 +7,26 @@ const Navbar = () => {
   const count = getCartCount();
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 100,
-      backgroundColor: 'rgba(61,74,45,0.95)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
-      boxShadow: '0 2px 20px rgba(0,0,0,0.15)',
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 24px',
-        height: '64px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
-        <Link to="/" style={{ 
-          textDecoration: 'none', 
-          color: '#f8f5f0', 
-          fontSize: '22px', 
-          fontWeight: 700,
-          fontFamily: 'Georgia, serif',
-          letterSpacing: '1px',
-        }}>
+    <nav className="fixed top-0 left-0 right-0 z-100 bg-[rgba(61,74,45,0.95)] backdrop-blur-2xl shadow-[0_2px_20px_rgba(0,0,0,0.15)]">
+      <div className="max-w-300 mx-auto px-6 h-16 flex items-center justify-between">
+        <Link 
+          to="/" 
+          className="no-underline text-[#f8f5f0] text-[22px] font-bold font-serif tracking-widest"
+        >
           BOUTIQUE
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          <Link to="/" style={{ textDecoration: 'none', color: '#d4c9b8', fontSize: '14px', letterSpacing: '0.5px', transition: 'color 0.2s' }}>
+        <div className="flex items-center gap-8">
+          <Link 
+            to="/" 
+            className="no-underline text-[#d4c9b8] text-sm tracking-wide transition-colors duration-200 hover:text-[#f8f5f0]"
+          >
             Collection
           </Link>
-          <Link to="/cart" style={{ position: 'relative', color: '#f8f5f0' }}>
+          <Link to="/cart" className="relative text-[#f8f5f0]">
             <ShoppingBag size={22} />
             {count > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: '-10px',
-                right: '-10px',
-                width: '22px',
-                height: '22px',
-                backgroundColor: '#c4a35a',
-                color: '#2d2a26',
-                borderRadius: '50%',
-                fontSize: '11px',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
+              <span className="absolute -top-2.5 -right-2.5 w-5.5 h-5.5 bg-[#c4a35a] text-[#2d2a26] rounded-full text-[11px] font-bold flex items-center justify-center">
                 {count > 9 ? '9+' : count}
               </span>
             )}

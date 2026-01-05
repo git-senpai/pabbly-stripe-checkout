@@ -37,78 +37,51 @@ const Success = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] flex items-center justify-center">
         <Loader size="lg" text="Loading order..." />
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%)', paddingTop: '130px', paddingBottom: '60px' }}>
-      <div style={{ maxWidth: '520px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{
-          backgroundColor: '#faf8f5',
-          borderRadius: '24px',
-          padding: '48px',
-          boxShadow: '0 8px 32px rgba(45,42,38,0.12)',
-          border: '1px solid rgba(139,154,110,0.2)',
-          textAlign: 'center',
-        }}>
-          <div style={{
-            width: '88px',
-            height: '88px',
-            background: 'linear-gradient(135deg, #e8f0e4 0%, #d4e0d0 100%)',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 28px',
-          }}>
-            <CheckCircle size={44} color="#5a6b4a" />
+    <div className="min-h-screen bg-linear-to-br from-[#f8f5f0] to-[#f0ebe3] pt-32.5 pb-15">
+      <div className="max-w-130 mx-auto px-6">
+        <div className="bg-[#faf8f5] rounded-3xl p-12 shadow-[0_8px_32px_rgba(45,42,38,0.12)] border border-[rgba(139,154,110,0.2)] text-center">
+          <div className="w-22 h-22 bg-linear-to-br from-[#e8f0e4] to-[#d4e0d0] rounded-full flex items-center justify-center mx-auto mb-7">
+            <CheckCircle size={44} className="text-[#5a6b4a]" />
           </div>
           
-          <h1 style={{ fontSize: '32px', fontWeight: 700, color: '#2d2a26', marginBottom: '12px', fontFamily: 'Georgia, serif' }}>Order Confirmed</h1>
-          <p style={{ color: '#7a756e', marginBottom: '36px', fontSize: '16px' }}>Thank you for your purchase</p>
+          <h1 className="text-[32px] font-bold text-[#2d2a26] mb-3 font-serif">Order Confirmed</h1>
+          <p className="text-[#7a756e] mb-9 text-base">Thank you for your purchase</p>
 
           {order && (
-            <div style={{
-              background: 'linear-gradient(135deg, #f0ebe3 0%, #e8e2d7 100%)',
-              borderRadius: '16px',
-              padding: '24px',
-              marginBottom: '36px',
-              textAlign: 'left',
-            }}>
-              <p style={{ fontSize: '13px', color: '#7a756e', marginBottom: '18px' }}>Confirmation sent to: <span style={{ color: '#2d2a26', fontWeight: 500 }}>{order.email}</span></p>
+            <div className="bg-linear-to-br from-[#f0ebe3] to-[#e8e2d7] rounded-2xl p-6 mb-9 text-left">
+              <p className="text-[13px] text-[#7a756e] mb-4.5">
+                Confirmation sent to: <span className="text-[#2d2a26] font-medium">{order.email}</span>
+              </p>
               
-              <div style={{ marginBottom: '18px' }}>
+              <div className="mb-4.5">
                 {order.items.map((item, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '10px' }}>
-                    <span style={{ color: '#2d2a26' }}>{item.name} x {item.quantity}</span>
-                    <span style={{ color: '#5a6b4a', fontWeight: 600 }}>{formatPrice(item.price * item.quantity)}</span>
+                  <div key={i} className="flex justify-between text-sm mb-2.5">
+                    <span className="text-[#2d2a26]">{item.name} x {item.quantity}</span>
+                    <span className="text-[#5a6b4a] font-semibold">{formatPrice(item.price * item.quantity)}</span>
                   </div>
                 ))}
               </div>
               
-              <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #c4a35a, transparent)', margin: '16px 0' }} />
+              <div className="h-px bg-linear-to-r from-transparent via-[#c4a35a] to-transparent my-4" />
               
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 700, color: '#2d2a26', fontFamily: 'Georgia, serif' }}>
+              <div className="flex justify-between text-lg font-bold text-[#2d2a26] font-serif">
                 <span>Total</span>
-                <span style={{ color: '#5a6b4a' }}>{formatPrice(order.totalAmount)}</span>
+                <span className="text-[#5a6b4a]">{formatPrice(order.totalAmount)}</span>
               </div>
             </div>
           )}
 
-          <Link to="/" style={{
-            display: 'inline-block',
-            padding: '16px 40px',
-            backgroundColor: '#5a6b4a',
-            color: '#f8f5f0',
-            textDecoration: 'none',
-            borderRadius: '12px',
-            fontSize: '16px',
-            fontWeight: 600,
-            fontFamily: 'Georgia, serif',
-          }}>
+          <Link 
+            to="/" 
+            className="inline-block py-4 px-10 bg-[#5a6b4a] text-[#f8f5f0] no-underline rounded-xl text-base font-semibold font-serif transition-colors hover:bg-[#4a5a3a]"
+          >
             Continue Shopping
           </Link>
         </div>

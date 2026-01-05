@@ -1,19 +1,15 @@
 const Loader = ({ size = 'md', text = 'Loading...' }) => {
-  const sizes = { sm: 20, md: 32, lg: 48 };
-  const s = sizes[size] || 32;
+  const sizes = { sm: 'w-5 h-5', md: 'w-8 h-8', lg: 'w-12 h-12' };
+  const sizeClass = sizes[size] || sizes.md;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-      <div style={{
-        width: s,
-        height: s,
-        border: '2px solid #d4c9b8',
-        borderTopColor: '#5a6b4a',
-        borderRadius: '50%',
-        animation: 'spin 0.8s linear infinite',
-      }} />
-      {text && <p style={{ color: '#6b6560', fontSize: '14px', fontFamily: 'Georgia, serif' }}>{text}</p>}
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    <div className="flex flex-col items-center gap-3">
+      <div className={`${sizeClass} border-2 border-[#d4c9b8] border-t-[#5a6b4a] rounded-full animate-spin`} />
+      {text && (
+        <p className="text-[#6b6560] text-sm font-serif">
+          {text}
+        </p>
+      )}
     </div>
   );
 };
