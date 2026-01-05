@@ -1,4 +1,4 @@
-import { Plus } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
@@ -12,68 +12,90 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div style={{
-      backgroundColor: '#faf8f5',
-      borderRadius: '16px',
-      overflow: 'hidden',
-      boxShadow: '0 4px 20px rgba(45,42,38,0.08)',
-      transition: 'transform 0.3s, box-shadow 0.3s',
-      border: '1px solid rgba(139,154,110,0.2)',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateY(-6px)';
-      e.currentTarget.style.boxShadow = '0 12px 32px rgba(45,42,38,0.12)';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.transform = 'translateY(0)';
-      e.currentTarget.style.boxShadow = '0 4px 20px rgba(45,42,38,0.08)';
-    }}
+    <div
+      style={{
+        backgroundColor: '#faf8f5',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 20px rgba(45,42,38,0.08)',
+        transition: 'transform 0.3s, box-shadow 0.3s',
+        border: '1px solid rgba(139,154,110,0.2)',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-6px)';
+        e.currentTarget.style.boxShadow = '0 12px 32px rgba(45,42,38,0.12)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 4px 20px rgba(45,42,38,0.08)';
+      }}
     >
-      <div style={{
-        aspectRatio: '1',
-        background: 'linear-gradient(180deg, #f0ebe3 0%, #e8e2d7 100%)',
-        padding: '28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+      <div
+        style={{
+          aspectRatio: '1',
+          background: 'linear-gradient(180deg, #f0ebe3 0%, #e8e2d7 100%)',
+          padding: '28px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <img
           src={product.image}
           alt={product.name}
           style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
         />
       </div>
-      
+
       <div style={{ padding: '24px' }}>
-        <h3 style={{
-          fontSize: '17px',
-          fontWeight: 600,
-          color: '#2d2a26',
-          marginBottom: '8px',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          fontFamily: 'Georgia, serif',
-        }}>
+        <h3
+          style={{
+            fontSize: '17px',
+            fontWeight: 600,
+            color: '#2d2a26',
+            marginBottom: '8px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            fontFamily: 'Georgia, serif',
+          }}
+        >
           {product.name}
         </h3>
-        <p style={{
-          fontSize: '13px',
-          color: '#7a756e',
-          marginBottom: '20px',
-          display: '-webkit-box',
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical',
-          overflow: 'hidden',
-          lineHeight: '1.6',
-        }}>
+
+        <p
+          style={{
+            fontSize: '13px',
+            color: '#7a756e',
+            marginBottom: '20px',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            lineHeight: '1.6',
+          }}
+        >
           {product.description}
         </p>
-        
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '20px', fontWeight: 700, color: '#5a6b4a', fontFamily: 'Georgia, serif' }}>
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '20px',
+              fontWeight: 700,
+              color: '#5a6b4a',
+              fontFamily: 'Georgia, serif',
+            }}
+          >
             {formatPrice(product.price)}
           </span>
+
           <button
             onClick={() => addToCart(product)}
             style={{
@@ -98,7 +120,7 @@ const ProductCard = ({ product }) => {
               e.currentTarget.style.transform = 'scale(1)';
             }}
           >
-            <Plus size={20} />
+            <ShoppingCart size={20} />
           </button>
         </div>
       </div>
